@@ -10,8 +10,13 @@ public class CMGJCompetitor {
     private ArrayList<Integer> categoryIDs;
     private ArrayList<Double> scoreList;
 
-    public CMGJCompetitor() {
-
+    public CMGJCompetitor(String lvl, int id, String cntry, int a, String fnm, String lnm) {
+        level = lvl;
+        competitorNumber = id;
+        country = cntry;
+        age = a;
+        fname = fnm;
+        lname = lnm;
     }
 
     public int getID() {
@@ -55,7 +60,7 @@ public class CMGJCompetitor {
     public void addScore(double s) {
         scoreList.add(s);
     }
-    public ArrayList getScores(){
+    public ArrayList getScoreArray(){
         return scoreList;
     }
 }
