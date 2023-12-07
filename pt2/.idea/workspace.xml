@@ -45,6 +45,15 @@
       <recent name="C:\Users\camer\Documents\GitHub\software-architecture\pt2\src" />
     </key>
   </component>
+  <component name="RunManager">
+    <configuration name="runner" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="pt2.Competitor" />
+      <module name="pt2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -53,11 +62,22 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1701185532086</updated>
-      <workItem from="1701185533555" duration="9844000" />
+      <workItem from="1701185533555" duration="17330000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/pt2/CMGJCompetitor.java</url>
+          <line>23</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

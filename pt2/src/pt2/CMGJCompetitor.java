@@ -1,3 +1,4 @@
+package pt2;
 import java.util.ArrayList;
 public class CMGJCompetitor {
     private String level;
@@ -6,9 +7,9 @@ public class CMGJCompetitor {
     private int age;
     private String fname;
     private String lname;
-    private ArrayList<String> chosenCategories;
-    private ArrayList<Integer> categoryIDs;
-    private ArrayList<Double> scoreList;
+    private ArrayList<String> chosenCategories = new ArrayList<String>();
+    private ArrayList<Integer> categoryIDs = new ArrayList<Integer>();
+    private ArrayList<Double> scoreList = new ArrayList<Double>();
 
     public CMGJCompetitor(String lvl, int id, String cntry, int a, String fnm, String lnm) {
         level = lvl;
@@ -20,7 +21,7 @@ public class CMGJCompetitor {
     }
 
     public int getID() {
-        return 0;
+        return competitorNumber;
     }
     public int getCompetitorNumber(){
         return competitorNumber;
@@ -30,9 +31,7 @@ public class CMGJCompetitor {
     public String getLevel(){
         return level;
     }
-    public String getFname() {
-        return fname;
-    }
+    public String getFname() { return fname; }
     public String getLname() {
         return lname;
     }
@@ -41,7 +40,7 @@ public class CMGJCompetitor {
     }
     public void joinCategory(String cat, int id) {
         chosenCategories.add(cat);
-        categoryIDs.add(id);
+        categoryIDs.add((Integer) id);
     }
     public void removeCategory(String cat) {
         for (int i=0; i < chosenCategories.size(); i++) {
@@ -55,10 +54,16 @@ public class CMGJCompetitor {
         return chosenCategories;
     }
     public int getIdForCategory(String cat){
-        return 0;
+        int id = 0;
+        for (int i=0; i < chosenCategories.size(); i++) {
+            if (chosenCategories.get(i) == cat) {
+                id = categoryIDs.get(i);
+            }
+        }
+        return id;
     }
     public void addScore(double s) {
-        scoreList.add(s);
+        scoreList.add((Double) s);
     }
     public ArrayList getScoreArray(){
         return scoreList;
