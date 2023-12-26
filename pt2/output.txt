@@ -1,0 +1,31 @@
+Competitor No: 100, Name: Ann Sthen, Country: UK, Level: novice, Age: 23, Scores: [5.0, 2.0, 1.0, 9.0], Overall Score: 5.080070288241023.
+Competitor No: 101, Name: George Shon, Country: UK, Level: novice, Age: 31, Scores: [2.0, 6.0, 5.0, 5.0], Overall Score: 6.161791450287817.
+Competitor No: 102, Name: Andy Clos, Country: UK, Level: novice, Age: 29, Scores: [4.0, 7.0, 2.0, 2.0], Overall Score: 5.253153123395571.
+Competitor No: 103, Name: Rinon Grov, Country: US, Level: intermediate, Age: 25, Scores: [1.0, 1.0, 5.0, 7.0], Overall Score: 2.9322992790977875.
+Competitor No: 104, Name: Mark Do Leno, Country: UK, Level: intermediate, Age: 22, Scores: [5.0, 7.0, 4.0, 2.0], Overall Score: 4.590623489235047.
+Competitor No: 105, Name: Harry Patrick, Country: UK, Level: beginner, Age: 32, Scores: [2.0, 6.0, 5.0, 8.0], Overall Score: 5.680694638641432.
+Competitor No: 106, Name: Vicy Mathew, Country: UK, Level: beginner, Age: 33, Scores: [6.0, 2.0, 9.0, 5.0], Overall Score: 5.82057051366791.
+Competitor No: 107, Name: Monica Loy, Country: US, Level: novice, Age: 29, Scores: [4.0, 4.0, 8.0, 2.0], Overall Score: 6.0.
+Competitor No: 108, Name: Susan Mathew, Country: US, Level: novice, Age: 28, Scores: [5.0, 6.0, 5.0, 3.0], Overall Score: 6.605779351596907.
+Competitor No: 109, Name: Andy Stov, Country: US, Level: intermediate, Age: 22, Scores: [6.0, 2.0, 9.0, 6.0], Overall Score: 5.545378491522287.
+Competitor No: 110, Name: Mary Francis, Country: UK, Level: intermediate, Age: 27, Scores: [7.0, 9.0, 6.0, 6.0], Overall Score: 7.400979901373618.
+Competitor No: 111, Name: Jomon Vicy, Country: UK, Level: intermediate, Age: 22, Scores: [6.0, 9.0, 10.0, 9.0], Overall Score: 8.849473051141223.
+Competitor No: 112, Name: Catherin George, Country: UAE, Level: beginner, Age: 20, Scores: [1.0, 4.0, 4.0, 2.0], Overall Score: 3.378414230005442.
+
+Highest Overall Scoring Competitor: CN 111 (JV)  has overall score 8.849473051141223.
+Highest Overall Score: 8.849473051141223
+Highest Single Score obtained by: Jomon Vicy
+Average Single Score: 4.961538461538462
+Average Overall Score: 5.638402139092775
+
+Frequency of total > 9: 0
+Frequency of total > 8: 1
+Frequency of total > 7: 2
+Frequency of total > 6: 4
+Frequency of total > 5: 10
+Frequency of total > 4: 11
+Frequency of total > 3: 12
+Frequency of total > 2: 13
+Frequency of total > 1: 13
+Frequency of total > 0: 13
+

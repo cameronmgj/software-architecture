@@ -66,11 +66,11 @@ public class Competitor {
     }*/
 
     public static double getOverallScore(CMGJCompetitor c) {
-        double total = 0;
+        double total = 1;
         for (int i=0; i < c.getScoreArray().size(); i++) {
             total *= (double) c.getScoreArray().get(i);
         }
-        //total = Math.pow(total, 1/c.getScoreArray().size());
+        total = Math.pow(total, 1.0/c.getScoreArray().size());
         switch(c.getLevel()) {
             case "novice":
                 total += 2;
