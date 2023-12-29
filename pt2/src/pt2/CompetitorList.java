@@ -1,12 +1,11 @@
 package pt2;
 
-import javax.lang.model.type.ArrayType;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
 public class CompetitorList {
-    ArrayList<CMGJCompetitor> competitors = new ArrayList<CMGJCompetitor>();
+    ArrayList<GeneralCompetitor> competitors = new ArrayList<GeneralCompetitor>();
     public CompetitorList() {
         /*
         CMGJCompetitor c0 = new CMGJCompetitor("novice", 1, "France", 97, "John", "Lee");
@@ -24,7 +23,7 @@ public class CompetitorList {
             BufferedReader reader = new BufferedReader(new FileReader("RunCompetitor.csv"));
             String line = reader.readLine();
 
-            while (line != null && !line.isEmpty()) {////////////////////////////////////////////////////////////////////////////////////////ITS NOT READING
+            while (line != null && !line.isEmpty()) {
                 String[] fields = line.split(",");
                 int id = Integer.parseInt(fields[0].trim());
                 String fnm = fields[1].trim();
@@ -33,9 +32,16 @@ public class CompetitorList {
                 String gndr = fields[4].trim();
                 String cntry = fields[5].trim();
                 String lvl = fields[6].trim();
-
-                competitors.add(new CMGJCompetitor(lvl, id, cntry, age, fnm, lnm));
-                CMGJCompetitor currentCompetitor  = competitors.get(competitors.size() -1);
+                if (lvl.equals("novice")) {
+                    competitors.add(new Novice(id, cntry, age, fnm, lnm));
+                }
+                else if (lvl.equals("intermediate")) {
+                    competitors.add(new Intermediate(id, cntry, age, fnm, lnm));
+                }
+                else if (lvl.equals("beginner")) {
+                    competitors.add(new Beginner(id, cntry, age, fnm, lnm));
+                }
+                GeneralCompetitor currentCompetitor  = competitors.get(competitors.size() -1);
                 for (int i = 7; i < fields.length; i++) {
                     currentCompetitor.addScore(Integer.parseInt(fields[i]));
                 }
@@ -52,10 +58,10 @@ public class CompetitorList {
     String createTable() {
         String s = "";
         for (int i = 0; i < competitors.size(); i++) {
-            s += Competitor.getFullDetails(competitors.get(i)) + "\n";
+            s += (competitors.get(i)).getFullDetails() + "\n";
         }
 
-        s += "\nHighest Overall Scoring Competitor: " + Competitor.getShortDetails(highestScoring()) + "\n";
+        s += "\nHighest Overall Scoring Competitor: " + highestScoring().getShortDetails() + "\n";
         s += "Highest Overall Score: " + highestScore() + "\n";
         s += "Highest Single Score obtained by: " + highestScoring().getFullName() + "\n";
         s += "Average Single Score: " + averageSingleScore() + "\n";
@@ -68,10 +74,10 @@ public class CompetitorList {
         return s;
     }
 
-    CMGJCompetitor highestScoring() {
-        CMGJCompetitor c = competitors.get(0);
+    GeneralCompetitor highestScoring() {
+        GeneralCompetitor c = competitors.get(0);
         for (int i = 1; i < competitors.size(); i++) {
-            if (Competitor.getOverallScore(competitors.get(i)) > Competitor.getOverallScore(c)) {
+            if (competitors.get(i).getOverallScore() > c.getOverallScore()) {
                 c = competitors.get(i);
             }
         }
@@ -79,19 +85,19 @@ public class CompetitorList {
     }
 
     Double highestScore() {
-        CMGJCompetitor c = competitors.get(0);
-        Double score = Competitor.getOverallScore(c);
+        GeneralCompetitor c = competitors.get(0);
+        Double score = c.getOverallScore();
         for (int i = 1; i < competitors.size(); i++) {
-            if (Competitor.getOverallScore(competitors.get(i)) > score) {
-                score = Competitor.getOverallScore(competitors.get(i));
+            if (competitors.get(i).getOverallScore() > score) {
+                score = competitors.get(i).getOverallScore();
             }
         }
         return score;
     }
 
 
-    CMGJCompetitor highestSingleScore() {
-        CMGJCompetitor c = competitors.get(0);
+    GeneralCompetitor highestSingleScore() {
+        GeneralCompetitor c = competitors.get(0);
         Double highestFound = 0.0;
         for (int i = 0; i < competitors.size(); i++) {
             for (int j = 0; j < c.getScoreArray().size(); j++) {
@@ -105,7 +111,7 @@ public class CompetitorList {
     }
 
     Double averageSingleScore() {
-        CMGJCompetitor c = competitors.get(0);
+        GeneralCompetitor c = competitors.get(0);
         Double score = 0.0;
         int scoresCount = 0;
         for (int i = 0; i < competitors.size(); i++) {
@@ -119,12 +125,12 @@ public class CompetitorList {
     }
 
     Double averageOverallScore() {
-        CMGJCompetitor c = competitors.get(0);
+        GeneralCompetitor c = competitors.get(0);
         Double score = 0.0;
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {
             c = competitors.get(i);
-            score += Competitor.getOverallScore(competitors.get(i));
+            score += competitors.get(i).getOverallScore();
             count++;
         }
         return score/count;
@@ -133,7 +139,7 @@ public class CompetitorList {
     int totalScoreFrequency(Double score) {
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {
-            if (Competitor.getOverallScore(competitors.get(i)) > score) {
+            if (competitors.get(i).getOverallScore() > score) {
                 count++;
             }
         }
@@ -144,7 +150,7 @@ public class CompetitorList {
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {
             if (competitors.get(i).getCompetitorNumber() == id) {
-                return Competitor.getShortDetails(competitors.get(i));
+                return competitors.get(i).getShortDetails();
             }
         }
         return "id does not exist in system";
