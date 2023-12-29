@@ -7,8 +7,18 @@ import java.io.PrintWriter;
 import java.io.IOException;
 
 public class Manager {
+    private void showGUI() {
+        GUI gui = new GUI();
+        gui.setVisible(true);
+    }
     public static void main(String[] args) {
-        CompetitorList compList = new CompetitorList();
+        Manager m0 = new Manager();
+        m0.showGUI();
+
+
+
+
+        /*CompetitorList compList = new CompetitorList();
         compList.readFile();
 
         String table = compList.createTable();
@@ -25,6 +35,6 @@ public class Manager {
         System.out.println(compList.detailsFromCompNo(id));
 
         // The string to write to the file
-        String content = "hello";
+        String content = "hello";*/
     }
 }

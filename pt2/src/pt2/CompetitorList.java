@@ -155,4 +155,14 @@ public class CompetitorList {
         }
         return "id does not exist in system";
     }
+
+    String fullDetailsFromCompNo(int id) {
+        int count = 0;
+        for (int i = 0; i < competitors.size(); i++) {
+            if (competitors.get(i).getCompetitorNumber() == id) {
+                return competitors.get(i).getFullDetails();
+            }
+        }
+        return "id does not exist in system";
+    }
 }

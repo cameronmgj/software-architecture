@@ -33,6 +33,9 @@ abstract class GeneralCompetitor {
     public String getLevel(){
         return level;
     }
+    public void setLevel(String l){
+        level = l;
+    }
     public String getFname() { return fname; }
     public String getLname() {
         return lname;
