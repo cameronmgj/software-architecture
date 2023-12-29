@@ -14,6 +14,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -48,7 +49,7 @@
       <recent name="C:\Users\camer\Documents\GitHub\software-architecture\pt2\src" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.ui">
     <configuration name="runner" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="pt2.Manager" />
       <module name="pt2" />
@@ -56,6 +57,17 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="ui" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" value="pt2.TournamentUI" />
+      <module name="pt2" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.runner" />
+      <item itemvalue="Application.ui" />
+    </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -66,7 +78,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701185532086</updated>
       <workItem from="1701185533555" duration="18544000" />
-      <workItem from="1702754344996" duration="52620000" />
+      <workItem from="1702754344996" duration="57547000" />
     </task>
     <servers />
   </component>
