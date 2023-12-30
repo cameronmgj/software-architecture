@@ -1,5 +1,9 @@
 package pt2;
 
+/**
+ * subclass for intermediate level competitors
+ */
+
 public class Intermediate extends GeneralCompetitor {
     public Intermediate(int id, String cntry, int a, String fnm, String lnm) {
         super("intermediate", id, cntry, a, fnm, lnm);

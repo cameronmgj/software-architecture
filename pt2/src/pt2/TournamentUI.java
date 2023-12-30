@@ -5,9 +5,18 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * Terminal UI for debugging and increased access to different functions
+ */
+
 public class TournamentUI {
     CompetitorList compList = new CompetitorList();
     String table;
+
+    /**
+     * runtime interface handler
+     * @param choice input from user at terminal.
+     */
     private void processTournament(int choice){
       switch (choice) {
             case 1:
@@ -55,7 +64,6 @@ public class TournamentUI {
                 break;
         }
     }
-
 
     public static void main(String[] args){
         int choice = 10000;

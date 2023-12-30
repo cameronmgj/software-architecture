@@ -4,11 +4,17 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.util.ArrayList;
 
+/**
+ * stores and allows handling of list of competitors in the system
+ */
+
 public class CompetitorList {
     ArrayList<GeneralCompetitor> competitors = new ArrayList<GeneralCompetitor>();
     public CompetitorList() {}
 
-
+    /**
+     * reads data from file to table.
+     */
     void readFile() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("RunCompetitor.csv"));
@@ -46,6 +52,9 @@ public class CompetitorList {
         }
     }
 
+    /**
+     * @return table of data reformatted.
+     */
     String createTable() {
         String s = "";
         for (int i = 0; i < competitors.size(); i++) {
@@ -65,6 +74,9 @@ public class CompetitorList {
         return s;
     }
 
+    /**
+     * @return highest scoring competitor.
+     */
     GeneralCompetitor highestScoring() {
         GeneralCompetitor c = competitors.get(0);
         for (int i = 1; i < competitors.size(); i++) {
@@ -75,6 +87,9 @@ public class CompetitorList {
         return c;
     }
 
+    /**
+     * @return highest score achieved.
+     */
     Double highestScore() {
         GeneralCompetitor c = competitors.get(0);
         Double score = c.getOverallScore();
@@ -86,6 +101,9 @@ public class CompetitorList {
         return score;
     }
 
+    /**
+     * @return highest individual game score achieved.
+     */
     GeneralCompetitor highestSingleScore() {
         GeneralCompetitor c = competitors.get(0);
         Double highestFound = 0.0;
@@ -100,6 +118,9 @@ public class CompetitorList {
         return c;
     }
 
+    /**
+     * @return average single score of all competitors.
+     */
     Double averageSingleScore() {
         GeneralCompetitor c = competitors.get(0);
         Double score = 0.0;
@@ -114,6 +135,9 @@ public class CompetitorList {
         return score;
     }
 
+    /**
+     * @return average overall score of all competitors.
+     */
     Double averageOverallScore() {
         GeneralCompetitor c = competitors.get(0);
         Double score = 0.0;
@@ -126,6 +150,10 @@ public class CompetitorList {
         return score/count;
     }
 
+    /**
+     * @param score minimum score to include.
+     * @return frequency count of scores above value given.
+     */
     int totalScoreFrequency(Double score) {
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {
@@ -136,6 +164,10 @@ public class CompetitorList {
         return count;
     }
 
+    /**
+     * @param id competitor id number.
+     * @return competitor short details.
+     */
     String detailsFromCompNo(int id) {
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {
@@ -146,6 +178,10 @@ public class CompetitorList {
         return "id does not exist in system";
     }
 
+    /**
+     * @param id competitor id number.
+     * @return competitor full details.
+     */
     String fullDetailsFromCompNo(int id) {
         int count = 0;
         for (int i = 0; i < competitors.size(); i++) {

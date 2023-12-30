@@ -1,5 +1,9 @@
 package pt2;
 
+/**
+ * subclass for novice level competitors
+ */
+
 public class Novice extends GeneralCompetitor {
     public Novice(int id, String cntry, int a, String fnm, String lnm) {
         super("novice", id, cntry, a, fnm, lnm);

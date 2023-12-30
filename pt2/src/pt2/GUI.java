@@ -7,6 +7,10 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import javax.swing.*;
 
+/**
+ * Simple GUI for viewing and light processing
+ */
+
 public class GUI extends JFrame  implements ActionListener
 {
     CompetitorList compList = new CompetitorList();
@@ -33,6 +37,9 @@ public class GUI extends JFrame  implements ActionListener
         setVisible(true);
     }
 
+    /**
+     * Create the center panel.
+     */
     private void setupCenterPanel() {
         displayList = new JTextArea(15,20);
         displayList.setFont(new Font (Font.MONOSPACED, Font.PLAIN,14));
@@ -41,6 +48,9 @@ public class GUI extends JFrame  implements ActionListener
         this.add(scrollList,BorderLayout.CENTER);
     }
 
+    /**
+     * Create the bottom panel.
+     */
     private void setupSouthPanel() {
         JPanel searchPanel = new JPanel();
         searchPanel.setLayout(new GridLayout(1,3));
@@ -82,6 +92,9 @@ public class GUI extends JFrame  implements ActionListener
         this.add(southPanel, BorderLayout.SOUTH);
     }
 
+    /**
+     * Create the top panel.
+     */
     private void setupNorthPanel() {
         JPanel northPanel = new JPanel();
         showListById = new JButton("List By ID");
@@ -107,6 +120,10 @@ public class GUI extends JFrame  implements ActionListener
         this.add(northPanel, BorderLayout.NORTH);
     }
 
+    /**
+     * Handle interrupts from gui.
+     * @param e the button clicked.
+     */
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == search) {
@@ -175,6 +192,9 @@ public class GUI extends JFrame  implements ActionListener
         }
     }
 
+    /**
+     * search for competitor by id.
+     */
     private void search() {
         int searchString = Integer.parseInt(searchField.getText().trim());
         String c = compList.detailsFromCompNo(searchString);
@@ -185,7 +205,10 @@ public class GUI extends JFrame  implements ActionListener
             result.setText("not found");
     }
 
-    private void saveToFile(){
+    /**
+     * Export the table to file.
+     */
+    private void saveToFile() {
         String table = compList.createTable();
         try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt"))) {
             writer.println(table);
@@ -195,6 +218,9 @@ public class GUI extends JFrame  implements ActionListener
         }
     }
 
+    /**
+     * Updates table display (center panel) on gui.
+     */
     private void refreshTable() {
         String table;
         CompetitorList tempList = new CompetitorList();

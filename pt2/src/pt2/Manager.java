@@ -1,6 +1,13 @@
 package pt2;
 
+/**
+ * runs the gui
+ */
+
 public class Manager {
+    /**
+     * displays the gui on screen.
+     */
     private void showGUI() {
         GUI gui = new GUI();
         gui.setVisible(true);
