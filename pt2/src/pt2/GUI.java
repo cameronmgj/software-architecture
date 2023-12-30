@@ -2,6 +2,9 @@ package pt2;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.stream.Collectors;
@@ -146,7 +149,8 @@ public class GUI extends JFrame  implements ActionListener
             int id = Integer.parseInt(searchField.getText().trim());
             for (int i=0; i < compList.competitors.size(); i++) {
                 if (compList.competitors.get(i).getID() == id) {
-                    compList.competitors.get(i).setLevel(JOptionPane.showInputDialog("New Level: "));
+                    String l = JOptionPane.showInputDialog("New Level: ");
+                    compList.competitors.get(i).setLevel(l);
                     break;
                 }
             }
@@ -170,14 +174,20 @@ public class GUI extends JFrame  implements ActionListener
             }
         }
         else if (e.getSource() == showListById) {
-            CompetitorList tempList = compList;
+            CompetitorList tempList = new CompetitorList();
+            for (GeneralCompetitor c : compList.competitors) {
+                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+            }
             tempList.competitors.sort((o1, o2)
                     -> Integer.compare(o1.getCompetitorNumber(), o2.getCompetitorNumber()));
             String table = tempList.createTable();
             displayList.setText(table);
         }
         else if (e.getSource() == showListByName ) {
-            CompetitorList tempList = compList;
+            CompetitorList tempList = new CompetitorList();
+            for (GeneralCompetitor c : compList.competitors) {
+                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+            }
             tempList.competitors.sort((o1, o2)
                     -> o1.getFullName().compareTo(o2.getFullName()));
             String table = tempList.createTable();
@@ -185,14 +195,20 @@ public class GUI extends JFrame  implements ActionListener
         }
         else if (e.getSource() == filterByLvl ) {
             String inputLvl = JOptionPane.showInputDialog("Level: ");
-            CompetitorList tempList = compList;
+            CompetitorList tempList = new CompetitorList();
+            for (GeneralCompetitor c : compList.competitors) {
+                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+            }
             tempList.competitors.removeIf(obj -> !obj.getLevel().equals(inputLvl));
             String table = tempList.createTable();
             displayList.setText(table);
         }
         else if (e.getSource() == filterByCntry ) {
             String inputCntry = JOptionPane.showInputDialog("Country: ");
-            CompetitorList tempList = compList;
+            CompetitorList tempList = new CompetitorList();
+            for (GeneralCompetitor c : compList.competitors) {
+                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+            }
             tempList.competitors.removeIf(obj -> !obj.getCountry().equals(inputCntry));
             String table = tempList.createTable();
             displayList.setText(table);
@@ -200,6 +216,7 @@ public class GUI extends JFrame  implements ActionListener
         else if (e.getSource() == close) {
             JOptionPane.showMessageDialog(this,
                     "Closing down ..");
+            saveToFile();
             System.exit(0);
         }
     }
@@ -214,6 +231,16 @@ public class GUI extends JFrame  implements ActionListener
         }
         else
             result.setText("not found");
+    }
+
+    private void saveToFile(){
+        String table = compList.createTable();
+        try (PrintWriter writer = new PrintWriter(new FileWriter("output.txt"))) {
+            writer.println(table);
+        }
+        catch (IOException e) {
+            System.out.println("error writing to file");
+        }
     }
 
 }
