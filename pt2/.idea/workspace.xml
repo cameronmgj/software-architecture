@@ -79,7 +79,7 @@
       <option name="presentableId" value="Default" />
       <updated>1701185532086</updated>
       <workItem from="1701185533555" duration="18544000" />
-      <workItem from="1702754344996" duration="77369000" />
+      <workItem from="1702754344996" duration="77681000" />
     </task>
     <servers />
   </component>
@@ -93,15 +93,6 @@
           <url>file://$PROJECT_DIR$/src/pt2/CMGJCompetitor.java</url>
           <line>23</line>
           <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/pt2/GeneralCompetitor.java</url>
-          <line>15</line>
-          <properties class="pt2.GeneralCompetitor" method="&lt;init&gt;">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="19" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

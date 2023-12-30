@@ -5,15 +5,11 @@ import java.awt.event.*;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.stream.Collectors;
 import javax.swing.*;
 
 public class GUI extends JFrame  implements ActionListener
 {
     CompetitorList compList = new CompetitorList();
-
     JTextField result;
     JTextField searchField;
     JButton search, shortDeets, fullDeets, editDeets, removeComp, addScore;
@@ -23,9 +19,7 @@ public class GUI extends JFrame  implements ActionListener
 
     public GUI()
     {
-        //set up window title
         setTitle("competitors");
-        //disable standard close button
         setDefaultCloseOperation(this.DO_NOTHING_ON_CLOSE);
 
         setupSouthPanel();
@@ -35,7 +29,6 @@ public class GUI extends JFrame  implements ActionListener
         compList.readFile();
         String table = compList.createTable();
 
-        //pack and set visible
         pack();
         setVisible(true);
 
@@ -50,7 +43,6 @@ public class GUI extends JFrame  implements ActionListener
     }
 
     private void setupSouthPanel() {
-        //search panel contains label, text field and button
         JPanel searchPanel = new JPanel();
         searchPanel.setLayout(new GridLayout(1,3));
         searchPanel.add(new JLabel("Enter ID"));
@@ -58,54 +50,42 @@ public class GUI extends JFrame  implements ActionListener
         searchPanel.add(searchField);
         search = new JButton("Search");
         searchPanel.add(search);
-        //specify action when button is pressed
         search.addActionListener(this) ;
 
 
 
         shortDeets = new JButton("Short Details");
         searchPanel.add(shortDeets);
-        //specify action when button is pressed
         shortDeets.addActionListener(this) ;
 
         fullDeets = new JButton("Full Details");
         searchPanel.add(fullDeets);
-        //specify action when button is pressed
         fullDeets.addActionListener(this) ;
 
         editDeets = new JButton("Edit Level");
         searchPanel.add(editDeets);
-        //specify action when button is pressed
         editDeets.addActionListener(this) ;
 
         removeComp = new JButton("Remove");
         searchPanel.add(removeComp);
-        //specify action when button is pressed
         removeComp.addActionListener(this) ;
 
         addScore = new JButton("Add Score");
         searchPanel.add(addScore);
-        //specify action when button is pressed
         addScore.addActionListener(this) ;
 
-
-
-        //Set up the area where the results will be displayed.
         result= new JTextField(25);
         result.setEditable(false);
 
-        //set up south panel containing 2 previous areas
         JPanel southPanel = new JPanel();
         southPanel.setLayout(new GridLayout(2,1));
         southPanel.add(searchPanel);
         southPanel.add(result);
 
-        //add south panel to the content pane
         this.add(southPanel, BorderLayout.SOUTH);
     }
 
     private void setupNorthPanel() {
-        //add north panel containing some buttons
         JPanel northPanel = new JPanel();
         showListById = new JButton("List By ID");
         showListById.addActionListener(this);
@@ -130,8 +110,6 @@ public class GUI extends JFrame  implements ActionListener
         this.add(northPanel, BorderLayout.NORTH);
     }
 
-    //come here when button is clicked
-    //find which button and act accordingly
     public void actionPerformed(ActionEvent e)
     {
         if (e.getSource() == search) {
@@ -176,7 +154,7 @@ public class GUI extends JFrame  implements ActionListener
         else if (e.getSource() == showListById) {
             CompetitorList tempList = new CompetitorList();
             for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+                tempList.competitors.add(c);
             }
             tempList.competitors.sort((o1, o2)
                     -> Integer.compare(o1.getCompetitorNumber(), o2.getCompetitorNumber()));
@@ -186,7 +164,7 @@ public class GUI extends JFrame  implements ActionListener
         else if (e.getSource() == showListByName ) {
             CompetitorList tempList = new CompetitorList();
             for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+                tempList.competitors.add(c);
             }
             tempList.competitors.sort((o1, o2)
                     -> o1.getFullName().compareTo(o2.getFullName()));
@@ -197,7 +175,7 @@ public class GUI extends JFrame  implements ActionListener
             String inputLvl = JOptionPane.showInputDialog("Level: ");
             CompetitorList tempList = new CompetitorList();
             for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+                tempList.competitors.add(c);
             }
             tempList.competitors.removeIf(obj -> !obj.getLevel().equals(inputLvl));
             String table = tempList.createTable();
@@ -207,7 +185,7 @@ public class GUI extends JFrame  implements ActionListener
             String inputCntry = JOptionPane.showInputDialog("Country: ");
             CompetitorList tempList = new CompetitorList();
             for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c); // Assuming Competitor has a copy constructor
+                tempList.competitors.add(c);
             }
             tempList.competitors.removeIf(obj -> !obj.getCountry().equals(inputCntry));
             String table = tempList.createTable();
@@ -222,8 +200,6 @@ public class GUI extends JFrame  implements ActionListener
     }
 
     private void search() {
-        //get search text and search staff list
-        //setting result text
         int searchString = Integer.parseInt(searchField.getText().trim());
         String c = compList.detailsFromCompNo(searchString);
         if (c != null ) {

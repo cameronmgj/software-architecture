@@ -6,16 +6,7 @@ import java.util.ArrayList;
 
 public class CompetitorList {
     ArrayList<GeneralCompetitor> competitors = new ArrayList<GeneralCompetitor>();
-    public CompetitorList() {
-        /*
-        CMGJCompetitor c0 = new CMGJCompetitor("novice", 1, "France", 97, "John", "Lee");
-        CMGJCompetitor c1 = new CMGJCompetitor("expert", 2, "Spain", 7, "Jo", "Leehn");
-        CMGJCompetitor c2 = new CMGJCompetitor("beginner", 3, "France", 64, "Mary", "Tudor");
-        competitors.add(c0);
-        competitors.add(c1);
-        competitors.add(c2);
-         */
-    }
+    public CompetitorList() {}
 
 
     void readFile() {
@@ -94,7 +85,6 @@ public class CompetitorList {
         }
         return score;
     }
-
 
     GeneralCompetitor highestSingleScore() {
         GeneralCompetitor c = competitors.get(0);
