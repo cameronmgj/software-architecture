@@ -17,6 +17,7 @@ public class GUI extends JFrame  implements ActionListener
     JButton showListById, showListByName, close, filterByLvl, filterByCntry;
     JTextArea displayList;
 
+    int currentState = 0;
     public GUI()
     {
         setTitle("competitors");
@@ -27,11 +28,9 @@ public class GUI extends JFrame  implements ActionListener
         setupCenterPanel();
 
         compList.readFile();
-        String table = compList.createTable();
-
+        refreshTable();
         pack();
         setVisible(true);
-
     }
 
     private void setupCenterPanel() {
@@ -51,8 +50,6 @@ public class GUI extends JFrame  implements ActionListener
         search = new JButton("Search");
         searchPanel.add(search);
         search.addActionListener(this) ;
-
-
 
         shortDeets = new JButton("Short Details");
         searchPanel.add(shortDeets);
@@ -132,6 +129,7 @@ public class GUI extends JFrame  implements ActionListener
                     break;
                 }
             }
+            refreshTable();
         }
         else if (e.getSource() == removeComp) {
             int id = Integer.parseInt(searchField.getText().trim());
@@ -141,6 +139,7 @@ public class GUI extends JFrame  implements ActionListener
                     break;
                 }
             }
+            refreshTable();
         }
         else if (e.getSource() == addScore) {
             int id = Integer.parseInt(searchField.getText().trim());
@@ -150,46 +149,23 @@ public class GUI extends JFrame  implements ActionListener
                     break;
                 }
             }
+            refreshTable();
         }
         else if (e.getSource() == showListById) {
-            CompetitorList tempList = new CompetitorList();
-            for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c);
-            }
-            tempList.competitors.sort((o1, o2)
-                    -> Integer.compare(o1.getCompetitorNumber(), o2.getCompetitorNumber()));
-            String table = tempList.createTable();
-            displayList.setText(table);
+            currentState = 1;
+            refreshTable();
         }
         else if (e.getSource() == showListByName ) {
-            CompetitorList tempList = new CompetitorList();
-            for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c);
-            }
-            tempList.competitors.sort((o1, o2)
-                    -> o1.getFullName().compareTo(o2.getFullName()));
-            String table = tempList.createTable();
-            displayList.setText(table);
+            currentState = 2;
+            refreshTable();
         }
         else if (e.getSource() == filterByLvl ) {
-            String inputLvl = JOptionPane.showInputDialog("Level: ");
-            CompetitorList tempList = new CompetitorList();
-            for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c);
-            }
-            tempList.competitors.removeIf(obj -> !obj.getLevel().equals(inputLvl));
-            String table = tempList.createTable();
-            displayList.setText(table);
+            currentState = 3;
+            refreshTable();
         }
         else if (e.getSource() == filterByCntry ) {
-            String inputCntry = JOptionPane.showInputDialog("Country: ");
-            CompetitorList tempList = new CompetitorList();
-            for (GeneralCompetitor c : compList.competitors) {
-                tempList.competitors.add(c);
-            }
-            tempList.competitors.removeIf(obj -> !obj.getCountry().equals(inputCntry));
-            String table = tempList.createTable();
-            displayList.setText(table);
+            currentState = 4;
+            refreshTable();
         }
         else if (e.getSource() == close) {
             JOptionPane.showMessageDialog(this,
@@ -216,6 +192,53 @@ public class GUI extends JFrame  implements ActionListener
         }
         catch (IOException e) {
             System.out.println("error writing to file");
+        }
+    }
+
+    private void refreshTable() {
+        String table;
+        CompetitorList tempList = new CompetitorList();
+        switch (currentState) {
+            case 0:
+                table = compList.createTable();
+                displayList.setText(table);
+                break;
+            case 1: //list by id
+                for (GeneralCompetitor c : compList.competitors) {
+                    tempList.competitors.add(c);
+                }
+                tempList.competitors.sort((o1, o2)
+                        -> Integer.compare(o1.getCompetitorNumber(), o2.getCompetitorNumber()));
+                table = tempList.createTable();
+                displayList.setText(table);
+                break;
+            case 2: //list by name
+                for (GeneralCompetitor c : compList.competitors) {
+                    tempList.competitors.add(c);
+                }
+                tempList.competitors.sort((o1, o2)
+                        -> o1.getFullName().compareTo(o2.getFullName()));
+                table = tempList.createTable();
+                displayList.setText(table);
+                break;
+            case 3: //filter by level
+                String inputLvl = JOptionPane.showInputDialog("Level: ");
+                for (GeneralCompetitor c : compList.competitors) {
+                    tempList.competitors.add(c);
+                }
+                tempList.competitors.removeIf(obj -> !obj.getLevel().equals(inputLvl));
+                table = tempList.createTable();
+                displayList.setText(table);
+                break;
+            case 4: //filter by country
+                String inputCntry = JOptionPane.showInputDialog("Country: ");
+                for (GeneralCompetitor c : compList.competitors) {
+                    tempList.competitors.add(c);
+                }
+                tempList.competitors.removeIf(obj -> !obj.getCountry().equals(inputCntry));
+                table = tempList.createTable();
+                displayList.setText(table);
+                break;
         }
     }
 
